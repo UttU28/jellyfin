@@ -467,6 +467,7 @@ public class LibraryController : BaseJellyfinApiController
             Recursive = true,
             IsVirtualItem = false,
             IsFavorite = isFavorite,
+            ExcludeItemsHiddenByCollections = user is not null,
             DtoOptions = new DtoOptions(false)
             {
                 EnableImages = false

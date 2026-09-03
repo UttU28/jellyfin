@@ -322,7 +322,8 @@ public class SimilarItemsManager : ISimilarItemsManager
             Recursive = true,
             IsPlayed = true,
             EnableGroupByMetadataKey = true,
-            DtoOptions = dtoOptions
+            DtoOptions = dtoOptions,
+            ExcludeItemsHiddenByCollections = true
         });
 
         var itemTypes = new List<BaseItemKind> { BaseItemKind.Movie };
@@ -343,7 +344,8 @@ public class SimilarItemsManager : ISimilarItemsManager
             EnableGroupByMetadataKey = true,
             ParentId = parentId,
             Recursive = true,
-            DtoOptions = dtoOptions
+            DtoOptions = dtoOptions,
+            ExcludeItemsHiddenByCollections = true
         });
 
         var mostRecentMovies = recentlyPlayedMovies.Take(Math.Min(recentlyPlayedMovies.Count, 6)).ToList();

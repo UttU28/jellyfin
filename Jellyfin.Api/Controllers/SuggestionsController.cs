@@ -89,7 +89,8 @@ public class SuggestionsController : BaseJellyfinApiController
             Limit = limit,
             DtoOptions = dtoOptions,
             EnableTotalRecordCount = enableTotalRecordCount,
-            Recursive = true
+            Recursive = true,
+            ExcludeItemsHiddenByCollections = true
         });
 
         var dtoList = _dtoService.GetBaseItemDtos(result.Items, dtoOptions, user);

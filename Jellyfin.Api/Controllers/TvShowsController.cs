@@ -169,7 +169,8 @@ public class TvShowsController : BaseJellyfinApiController
             Limit = limit,
             ParentId = parentIdGuid,
             Recursive = true,
-            DtoOptions = options
+            DtoOptions = options,
+            ExcludeItemsHiddenByCollections = true
         });
 
         var returnItems = _dtoService.GetBaseItemDtos(itemsResult, options, user);

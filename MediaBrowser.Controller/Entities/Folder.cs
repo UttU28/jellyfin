@@ -1009,6 +1009,10 @@ namespace MediaBrowser.Controller.Entities
             {
                 query.ExcludeItemsHiddenByCollections = false;
             }
+            else if (query.User is not null)
+            {
+                query.ExcludeItemsHiddenByCollections = true;
+            }
 
             // BoxSets and Playlists can have per-user visibility (shares/open access) that is stored in the
             // serialized item data and cannot be evaluated by the database query, so filter them in memory.
@@ -1852,7 +1856,8 @@ namespace MediaBrowser.Controller.Entities
                 var batched = LibraryManager.GetItemList(new InternalItemsQuery
                 {
                     ItemIds = [.. idsToBatch],
-                    DtoOptions = options ?? new DtoOptions()
+                    DtoOptions = options ?? new DtoOptions(),
+                    ExcludeItemsHiddenByCollections = false
                 });
                 byId = new Dictionary<Guid, BaseItem>(batched.Count);
                 foreach (var item in batched)

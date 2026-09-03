@@ -61,7 +61,7 @@ namespace MediaBrowser.Controller.Entities
             SkipDeserialization = false;
             AudioLanguages = [];
             SubtitleLanguages = [];
-            ExcludeItemsHiddenByCollections = true;
+            ExcludeItemsHiddenByCollections = false;
         }
 
         public InternalItemsQuery(User? user)
@@ -216,8 +216,10 @@ namespace MediaBrowser.Controller.Entities
 
         /// <summary>
         /// Gets or sets a value indicating whether items that belong to a collection with
-        /// hide-from-library enabled should be excluded. Defaults to true. Disabled when
-        /// querying inside a collection or playlist so those items remain visible there.
+        /// hide-from-library enabled should be excluded from user-facing library views.
+        /// Defaults to false so scans, image refresh, and item lookups still see those items.
+        /// User browse/search queries should set this to true. Always leave false when querying
+        /// inside a collection or playlist so members remain visible there.
         /// </summary>
         public bool ExcludeItemsHiddenByCollections { get; set; }
 

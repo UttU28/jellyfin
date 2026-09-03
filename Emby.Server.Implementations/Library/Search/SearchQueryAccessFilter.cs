@@ -27,7 +27,8 @@ internal static class SearchQueryAccessFilter
         {
             IncludeItemTypes = query.IncludeItemTypes,
             ExcludeItemTypes = query.ExcludeItemTypes,
-            IncludeItemsByName = !query.ParentId.HasValue || query.ParentId.Value.IsEmpty()
+            IncludeItemsByName = !query.ParentId.HasValue || query.ParentId.Value.IsEmpty(),
+            ExcludeItemsHiddenByCollections = true
         };
 
         // ConfigureUserAccess populates TopParentIds for the libraries the user may open.

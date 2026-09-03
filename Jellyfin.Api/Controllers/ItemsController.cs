@@ -385,6 +385,7 @@ public class ItemsController : BaseJellyfinApiController
             IncludeItemTypes = includeItemTypes,
             ExcludeItemTypes = excludeItemTypes,
             Recursive = recursive ?? false,
+            ExcludeItemsHiddenByCollections = user is not null && ids.Length == 0,
             OrderBy = RequestHelpers.GetOrderBy(sortBy, sortOrder),
             IsFavorite = isFavorite,
             Limit = searchResultScores is null ? limit : null,
@@ -993,7 +994,8 @@ public class ItemsController : BaseJellyfinApiController
             IncludeItemTypes = includeItemTypes,
             ExcludeItemTypes = excludeItemTypes,
             SearchTerm = searchTerm,
-            ExcludeItemIds = excludeItemIds
+            ExcludeItemIds = excludeItemIds,
+            ExcludeItemsHiddenByCollections = true
         });
 
         var returnItems = _dtoService.GetBaseItemDtos(itemsResult.Items, dtoOptions, user);

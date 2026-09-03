@@ -34,7 +34,8 @@ public sealed class BaseItemRepositoryHideFromLibraryTests : SqliteDbTestFixture
     {
         var ids = _repository.GetItemList(new InternalItemsQuery
         {
-            IncludeItemTypes = [BaseItemKind.Movie]
+            IncludeItemTypes = [BaseItemKind.Movie],
+            ExcludeItemsHiddenByCollections = true
         }).Select(i => i.Id).ToHashSet();
 
         Assert.Contains(_visibleMovie, ids);

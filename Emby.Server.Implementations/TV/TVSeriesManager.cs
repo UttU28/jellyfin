@@ -119,7 +119,8 @@ namespace Emby.Server.Implementations.TV
 
             var query = new InternalItemsQuery(user)
             {
-                DtoOptions = dtoOptions
+                DtoOptions = dtoOptions,
+                ExcludeItemsHiddenByCollections = true
             };
 
             var batchResult = _libraryManager.GetNextUpEpisodesBatch(query, seriesKeys, includeSpecials, includeRewatching);
